@@ -38,3 +38,35 @@ main {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 200, "opsz" 48;
 }
+
+.container {
+  width: 145.2rem;
+  margin: 0 auto;
+}
+
+button {
+  color: var(--color-white-secondary);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-grey-secondary);
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color: #527aa5;
+}
+a:active {
+  color: white;
+}
+
+hr {
+  margin-bottom: 1.5%;
+}

@@ -1,0 +1,23 @@
+.content {
+  margin: auto;
+  width: 50%;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.addField {
+  background-color: transparent;
+  position: relative;
+  border: 1px solid var(--color-grey-secondary);
+  font-size: large;
+  text-align: center;
+  margin-left: 1rem;
+  border-radius: 1rem;
+  padding: 3%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
