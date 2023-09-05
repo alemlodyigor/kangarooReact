@@ -3,10 +3,10 @@ import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import classess from "./Field.module.css";
 
-const Field = () => {
+const Field = (props) => {
   return (
     <div className={classess.container}>
-      <Input type="text" value="id" className={classess.input} />
+      <Input type="text" className={classess.input} />
       <select name="type" className={classess.select}>
         <option value="id">id</option>
         <option value="first_name_male">Imię (męskie)</option>
@@ -19,11 +19,13 @@ const Field = () => {
         <option value="card_number">Numer karty</option>
         <option value="city">Miasto</option>
         <option value="country">Kraj (Polska)</option>
-        <option value="marka_samochodu">Marka samochodu</option>
-        <option value="model_samochodu">Model samochodu</option>
-        <option value="kolor">Kolor</option>
+        <option value="car_brand">Marka samochodu</option>
+        <option value="car_model">Model samochodu</option>
+        <option value="color">Kolor</option>
       </select>
-      <Button className={classess.delete}>X</Button>
+      <Button className={classess.delete} onAction={props.onDelete}>
+        X
+      </Button>
     </div>
   );
 };
