@@ -1,0 +1,29 @@
+.header {
+  background-color: var(--color-green);
+  margin-bottom: 3%;
+}
+
+.container {
+  display: flex;
+  height: 6rem;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.logo {
+  margin-left: 1rem;
+  display: flex;
+}
+
+.title {
+  margin: auto 0;
+  color: var(--color-white-secondary);
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+  width: 80rem;
+  justify-content: center;
+}
