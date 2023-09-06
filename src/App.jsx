@@ -6,7 +6,7 @@ import Arguments from "./components/Arguments/Arguments";
 import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
 
   return (
     <>

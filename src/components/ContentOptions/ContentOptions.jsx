@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import classess from "./ContentOptions.module.css";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 
 const ContentOptions = () => {
+  const [rowsNumber, setRowsNumber] = useState('');
+  
+  const handleSubmit = () => {
+
+  }
+
   return (
     <section className={classess.options}>
       <div className={classess.box}>
@@ -28,7 +34,7 @@ const ContentOptions = () => {
         <input type="checkbox" id="create" checked />
         <label for="create">Stworzyć tabelę?</label>
       </div>
-      <Button id="download_data" className={classess.confirm}>
+      <Button id="download_data" className={classess.confirm} onAction={handleSubmit}>
         Pobierz bazę danych
       </Button>
     </section>
