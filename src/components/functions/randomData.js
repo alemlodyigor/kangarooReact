@@ -1,4 +1,8 @@
+import faker from "faker";
+
 export const randomData = (props) => {}
-export const randomCC = () => {
-    let cardNumber = '';
+export const generateCreditCardNumber = () => {
+    const cardNumber = faker.finance.creditCardNumber();
+    return cardNumber;
 }
+
