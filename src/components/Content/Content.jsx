@@ -1,18 +1,30 @@
 import React, { useState } from "react";
 import classess from "./Content.module.css";
-
 import Field from "../Field/Field";
 import Button from "../UI/Button/Button";
 
-const Content = () => {
+const Content = (props) => {  
   const [fields, setFields] = useState([]);
 
   const handleAddNewField = () => {
     const newField = {
       id: fields.length + 1,
+      name: 'id',
+      rowType: 'id',
     };
     setFields([...fields, newField]);
   };
+
+  const handleChangeField = (obj) => {
+    const [id, name, type] = obj;
+    const [field] = fields.filter(e => e.id === id);
+    const otherfields = fields.filter(e => e.id !== id);
+    field.name = name;
+    field.rowType = type;
+    otherfields.push(field);
+    setFields(otherfields)
+    props.onAddContent(fields);
+  }
 
   const handleDeleteField = (id) => {
     const updatedFields = fields.filter((field) => field.id !== id);
@@ -28,7 +40,7 @@ const Content = () => {
       </div>
       <section className={classess.body}>
         {fields.map((e) => (
-          <Field key={e.id} onDelete={() => handleDeleteField(e.id)} />
+          <Field key={e.id} id={e.id} onDelete={() => handleDeleteField(e.id)} onChangeField={handleChangeField} name={e.name} type={e.type} />
         ))}
       </section>
       <Button className={classess.addField} onAction={handleAddNewField}>
