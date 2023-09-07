@@ -1,1 +1,3 @@
-export const insert = props => {}
+export const insert = props => {
+    
+}
