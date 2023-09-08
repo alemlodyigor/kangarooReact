@@ -23,9 +23,9 @@ const ContentOptions = (props) => {
   const handleSubmit = () => {
     const obj = {
       tableName: tableName,
-      rowsNumber : rowsNumber,
-      createTable : createTable
-    }
+      rowsNumber: rowsNumber,
+      createTable: createTable,
+    };
     props.onAddTable(obj);
   };
 

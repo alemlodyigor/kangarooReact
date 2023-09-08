@@ -1,11 +1,12 @@
-export const createTable = (data) => {
-  if (!Array.isArray(data) || data.length === 0) return;
+export const createTableFunction = (data) => {
+  const tableName = data.tableName;
+  const tableData = data.tableData;
 
-  const columns = Object.keys(data[0]);
+  if (!Array.isArray(tableData) || tableData.length === 0 || tableName.trim() < 1) return;
 
   const query = `
-    create table ${data.tableName} (
-      ${columns.map(column => `${column.dataType}`).join(',\n')}
+    create table ${tableName} (
+      ${tableData.map(column => `${column.name} ${column.dataType}`).join(',\n')}
     );
   `
   return query;

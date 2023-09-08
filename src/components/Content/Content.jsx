@@ -11,18 +11,20 @@ const Content = (props) => {
       id: fields.length + 1,
       name: 'id',
       rowType: 'id',
+      dataType: 'INT'
     };
     setFields([...fields, newField]);
   };
 
   const handleChangeField = (obj) => {
-    const [id, name, type] = obj;
+    const [id, name, type, selectedType] = obj;
     const [field] = fields.filter(e => e.id === id);
     const otherfields = fields.filter(e => e.id !== id);
     field.name = name;
     field.rowType = type;
+    field.dataType = selectedType;
     otherfields.push(field);
-    setFields(otherfields)
+    setFields(otherfields);
     props.onAddContent(fields);
   }
 

@@ -5,6 +5,7 @@ import ContentOptions from "./components/ContentOptions/ContentOptions";
 import Arguments from "./components/Arguments/Arguments";
 import { useState } from "react";
 import { fetchData } from "./components/functions/fetchData";
+import { createTableFunction } from "./components/functions/createTable";
 
 function App() {
   const [cars, setCars] = useState();
@@ -32,18 +33,21 @@ function App() {
     createTable: true,
     tableData: [],
   };
-
-  const handleAddTableData = (object) => {
-    const { tableName, rowsNumber, createTable } = object;
+  
+  const handleAddTableDetails = (object) => {
+    const {tableName, rowsNumber, createTable} = object;
     data.tableName = tableName;
     data.rowsNumber = rowsNumber;
     data.createTable = createTable;
-  };
+  }
 
   const handleAddTableContent = (array) => {
     data.tableData = array;
-    console.log(data.tableData);
   };
+
+  const handleGenerate = () => {
+    data.createTable === true && createTableFunction(data);
+  }
 
   return (
     <>
@@ -52,7 +56,7 @@ function App() {
         <main>
           <Content onAddContent={handleAddTableContent} />
           <hr />
-          <ContentOptions onAddTable={handleAddTableData} />
+          <ContentOptions onAddTable={handleAddTableDetails} onGenerate={handleGenerate} />
           <Arguments />
         </main>
       </div>
