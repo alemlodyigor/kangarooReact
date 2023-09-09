@@ -10,17 +10,20 @@ const ContentOptions = (props) => {
 
   const handleRowsNumber = (e) => {
     setRowsNumber(+e.target.value);
+    handleChangeDetails();
   };
 
   const handleTableName = (e) => {
     setTableName(e.target.value);
+    handleChangeDetails();
   };
 
   const handleCreateTable = () => {
     createTable === true ? setCreateTable(false) : setCreateTable(true);
+    handleChangeDetails();
   };
 
-  const handleSubmit = () => {
+  const handleChangeDetails = () => {
     const obj = {
       tableName: tableName,
       rowsNumber: rowsNumber,
@@ -64,7 +67,7 @@ const ContentOptions = (props) => {
       <Button
         id="download_data"
         className={classess.confirm}
-        onAction={handleSubmit}
+        onAction={props.onGenerate}
       >
         Pobierz bazę danych
       </Button>

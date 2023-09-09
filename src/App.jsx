@@ -13,6 +13,22 @@ function App() {
   const [colors, setColors] = useState();
   const [female, setFemale] = useState();
   const [male, setMale] = useState();
+  let sql = "";
+
+  const data = {
+    tableName: "",
+    rowsNumber: 0,
+    createTable: true,
+    tableData: [],
+  };
+
+  const dbData = {
+    cars: cars,
+    cities: cities,
+    colors: colors,
+    female: female,
+    male: male,
+  };
 
   const getData = async () => {
     const carsDb = await fetchData("cars");
@@ -27,27 +43,21 @@ function App() {
     setMale(maleDb);
   };
 
-  const data = {
-    tableName: "",
-    rowsNumber: 0,
-    createTable: true,
-    tableData: [],
-  };
-  
   const handleAddTableDetails = (object) => {
-    const {tableName, rowsNumber, createTable} = object;
+    const { tableName, rowsNumber, createTable } = object;
     data.tableName = tableName;
     data.rowsNumber = rowsNumber;
     data.createTable = createTable;
-  }
+  };
 
   const handleAddTableContent = (array) => {
     data.tableData = array;
   };
 
-  const handleGenerate = () => {
-    data.createTable === true && createTableFunction(data);
-  }
+  const handleGenerate = async () => {
+    if (data.createTable) sql = createTableFunction(data);
+    await getData();
+  };
 
   return (
     <>
@@ -56,7 +66,10 @@ function App() {
         <main>
           <Content onAddContent={handleAddTableContent} />
           <hr />
-          <ContentOptions onAddTable={handleAddTableDetails} onGenerate={handleGenerate} />
+          <ContentOptions
+            onAddTable={handleAddTableDetails}
+            onGenerate={handleGenerate}
+          />
           <Arguments />
         </main>
       </div>
