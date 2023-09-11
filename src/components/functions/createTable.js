@@ -9,5 +9,6 @@ export const createTableFunction = (data) => {
       ${tableData.map(column => `${column.name} ${column.dataType}`).join(',\n')}
     );
   `
+
   return query;
 };

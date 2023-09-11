@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classess from "./ContentOptions.module.css";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
@@ -10,27 +10,24 @@ const ContentOptions = (props) => {
 
   const handleRowsNumber = (e) => {
     setRowsNumber(+e.target.value);
-    handleChangeDetails();
   };
 
   const handleTableName = (e) => {
     setTableName(e.target.value);
-    handleChangeDetails();
   };
 
   const handleCreateTable = () => {
     createTable === true ? setCreateTable(false) : setCreateTable(true);
-    handleChangeDetails();
   };
 
-  const handleChangeDetails = () => {
+  useEffect(() => {
     const obj = {
       tableName: tableName,
       rowsNumber: rowsNumber,
       createTable: createTable,
     };
     props.onAddTable(obj);
-  };
+  }, [rowsNumber, createTable, tableName]);
 
   return (
     <section className={classess.options}>
