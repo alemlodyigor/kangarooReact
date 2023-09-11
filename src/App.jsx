@@ -3,18 +3,22 @@ import "./app.css";
 import Content from "./components/Content/Content";
 import ContentOptions from "./components/ContentOptions/ContentOptions";
 import Arguments from "./components/Arguments/Arguments";
-import { useState } from "react";
-import { fetchData } from "./components/functions/fetchData";
+import { useEffect, useState } from "react";
+import { fetchData, generateFile } from "./components/functions/fetchData";
 import { createTableFunction } from "./components/functions/createTable";
 import { randomData } from "./components/functions/randomData.js";
 import { insert } from "./components/functions/insert";
 
 function App() {
-  const [cars, setCars] = useState();
+  const [cars, setCars] = useState({ carBrand: [], carModel: [] });
   const [cities, setCities] = useState();
   const [colors, setColors] = useState();
-  const [female, setFemale] = useState();
-  const [male, setMale] = useState();
+  const [female, setFemale] = useState({
+    firstNameFemale: [],
+    lastNameFemale: [],
+  });
+  const [male, setMale] = useState({ firstNameMale: [], lastNameMale: [] });
+  const [dbData, setdbData] = useState({});
   let sql = "";
 
   const data = {
@@ -24,18 +28,20 @@ function App() {
     tableData: [],
   };
 
-  const dbData = {
-    carBrand: cars.carBrand,
-    carModel: cars.carModel,
-    cities: cities,
-    colors: colors,
-    firstNameFemale: female.firstName,
-    lastNameFemale: female.lastName,
-    firstNameMale: male.firstName,
-    lastNameMale: male.lastName,
-    gender: ['m', 'k'],
-    country: ['Polska'],
-  };
+  useEffect(() => {
+    setdbData({
+      carBrand: cars.carBrand,
+      carModel: cars.carModel,
+      cities: cities,
+      colors: colors,
+      firstNameFemale: female.firstName,
+      lastNameFemale: female.lastName,
+      firstNameMale: male.firstName,
+      lastNameMale: male.lastName,
+      gender: ["m", "k"],
+      country: ["Polska"],
+    });
+  }, [cars, cities, colors, female, male]);
 
   const getData = async () => {
     const carsDb = await fetchData("cars");
@@ -81,11 +87,16 @@ function App() {
   };
 
   const handleGenerate = async () => {
-    if (data.createTable) sql = createTableFunction(data);
+    if (data.createTable) sql += createTableFunction(data);
 
     await getData();
 
     const random = randomData(data, dbData);
+
+    data.tableData = random;
+    sql += insert(data);
+
+    generateFile(sql);
   };
 
   return (

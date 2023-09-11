@@ -1,9 +1,8 @@
 import faker from "faker";
 
 export const randomData = (data, dbData) => {
-  const { rowsNumber, tableName } = data;
+  const { rowsNumber } = data;
   const tableData = data.tableData;
-  console.log('tableData', tableData);
   const randomData = [];
 
   if (!tableData || tableData.length === 0) return;
@@ -24,41 +23,52 @@ export const randomData = (data, dbData) => {
     country: getCountry,
   };
 
-  tableData.forEach(e => {
-    console.log(e);
-    const {name, rowType} = e;
-    if(rowType === 'id') return;
+  tableData.forEach((e) => {
+    const { id, name, rowType, dataType } = e;
+    if (rowType === "id") {randomData.push({
+      id: id,
+      name: name,
+      rowType: rowType,
+      dataType: dataType,
+      value: id,
+    }); return;}
+    
+    for (let i = 0; i < rowsNumber; i++) {
+      const dataGenerator = dataGenerators[rowType];
 
-    for(let i = 0; i < rowsNumber; i++) {
-      rowType === 'city';
-      
-      const dataGenerator = dataGenerators(rowType);
-
-      if(dataGenerator) {
+      if (dataGenerator) {
+        console.log(dbData);
+        console.log(dbData[rowType]);
         const randomValue = dataGenerator(dbData[rowType]);
-        randomData.push( {name : randomValue});
+        randomData.push({
+          id: id,
+          name: name,
+          rowType: rowType,
+          dataType: dataType,
+          value: randomValue,
+        });
       }
     }
-  })
-
+  });
+  console.log(randomData);
   return randomData;
 };
 
 const randomIndex = (data) => {
   return Math.floor(Math.random() * data.length);
-}
+};
 
 const getRandomCar = (carsData) => {
   const index = randomIndex(carsData);
 
   return carsData[index];
-}
+};
 
 const getRandomCity = (citiesData) => {
   const index = randomIndex(citiesData);
 
   return citiesData[index];
-}
+};
 
 const getRandomCC = () => {
   const cardNumber = faker.finance.creditCardNumber();
@@ -81,44 +91,44 @@ const getRandomFirstNameMale = (firstNameMaleData) => {
   const index = randomIndex(firstNameMaleData);
 
   return firstNameMaleData[index];
-}
+};
 const getRandomLastNameMale = (lastNameMaleData) => {
   const index = randomIndex(lastNameMaleData);
 
   return lastNameMaleData[index];
-}
+};
 const getRandomFirstNameFemale = (firstNameFemaleData) => {
   const index = randomIndex(firstNameFemaleData);
 
   return firstNameFemaleData[index];
-}
+};
 const getRandomLastNameFemale = (lastNameFemaleData) => {
   const index = randomIndex(lastNameFemaleData);
 
   return lastNameFemaleData[index];
-}
+};
 const getRandomCarBrand = (carBrandData) => {
   const index = randomIndex(carBrandData);
 
   return carBrandData[index];
-}
+};
 const getRandomCarModel = (carModelData) => {
   const index = randomIndex(carModelData);
 
   return carModelData[index];
-}
+};
 const getRandomColor = (colorsData) => {
   const index = randomIndex(colorsData);
 
   return colorsData[index];
-}
+};
 const getCountry = (countryData) => {
   const index = randomIndex(countryData);
 
   return countryData[index];
-}
+};
 const getGender = (genderData) => {
   const index = randomIndex(genderData);
-  
+
   return genderData[index];
-}
+};

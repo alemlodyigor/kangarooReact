@@ -1,5 +1,5 @@
 export const insert = (data) => {
-    if (!Array.isArray(data) || data.length === 0) return;
+    if (!Array.isArray(data.tableData) || data.tableData.length === 0) return;
 
     const columns = Object.keys(data[0]);
 
