@@ -7,7 +7,7 @@ const Field = (props) => {
   const id = props.id;
   const [name, setName] = useState(props.name);
   const [type, setType] = useState("");
-  const [selectedDataType, setSelectedDataType] = useState('');
+  const [selectedDataType, setSelectedDataType] = useState("");
 
   useEffect(() => {
     changeField();
@@ -46,28 +46,25 @@ const Field = (props) => {
         <option value="id" data-type="INT">
           id
         </option>
-        <option value="first_name_male" data-type="VARCHAR(50)">
+        <option value="firstNameMale" data-type="VARCHAR(50)">
           Imię (męskie)
         </option>
-        <option value="last_name_male" data-type="VARCHAR(50)">
+        <option value="lastNameMale" data-type="VARCHAR(50)">
           Nazwisko (męskie)
         </option>
-        <option value="first_name_female" data-type="VARCHAR(50)">
+        <option value="firstNameFemale" data-type="VARCHAR(50)">
           Imię (żeńskie)
         </option>
-        <option value="last_name_female" data-type="VARCHAR(50)">
+        <option value="lastNameFemale" data-type="VARCHAR(50)">
           Nazwisko (żeńskie)
         </option>
-        <option value="gender_m" data-type="VARCHAR(1)">
-          Płeć (M)
+        <option value="gender" data-type="VARCHAR(1)">
+          Płeć
         </option>
-        <option value="gender_f" data-type="VARCHAR(1)">
-          Płeć (K)
-        </option>
-        <option value="birth_date" data-type="VARCHAR(50)">
+        <option value="birthDate" data-type="VARCHAR(50)">
           Data urodzenia
         </option>
-        <option value="card_number" data-type="VARCHAR(24)">
+        <option value="ccNumber" data-type="VARCHAR(24)">
           Numer karty
         </option>
         <option value="city" data-type="VARCHAR(50)">
@@ -76,10 +73,10 @@ const Field = (props) => {
         <option value="country" data-type="VARCHAR(50)">
           Kraj (Polska)
         </option>
-        <option value="car_brand" data-type="VARCHAR(50)">
+        <option value="carBrand" data-type="VARCHAR(50)">
           Marka samochodu
         </option>
-        <option value="car_model" data-type="VARCHAR(50)">
+        <option value="carModel" data-type="VARCHAR(50)">
           Model samochodu
         </option>
         <option value="color" data-type="VARCHAR(50)">
