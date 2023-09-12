@@ -67,7 +67,7 @@ const Field = (props) => {
         <option value="ccNumber" data-type="VARCHAR(24)">
           Numer karty
         </option>
-        <option value="city" data-type="VARCHAR(50)">
+        <option value="cities" data-type="VARCHAR(50)">
           Miasto
         </option>
         <option value="country" data-type="VARCHAR(50)">
@@ -79,7 +79,7 @@ const Field = (props) => {
         <option value="carModel" data-type="VARCHAR(50)">
           Model samochodu
         </option>
-        <option value="color" data-type="VARCHAR(50)">
+        <option value="colors" data-type="VARCHAR(50)">
           Kolor
         </option>
       </select>

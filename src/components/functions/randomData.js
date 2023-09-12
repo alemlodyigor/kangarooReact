@@ -4,7 +4,7 @@ export const randomData = (data, dbData) => {
   const { rowsNumber } = data;
   const tableData = data.tableData;
   const randomData = [];
-
+  
   if (!tableData || tableData.length === 0) return;
 
   const dataGenerators = {
@@ -14,17 +14,17 @@ export const randomData = (data, dbData) => {
     firstNameFemale: getRandomFirstNameFemale,
     lastNameFemale: getRandomLastNameFemale,
     birthDate: getRandomBirthDate,
-    city: getRandomCity,
+    cities: getRandomCity,
     ccNumber: getRandomCC,
     gender: getGender,
     carBrand: getRandomCarBrand,
     carModel: getRandomCarModel,
-    color: getRandomColor,
+    colors: getRandomColor,
     country: getCountry,
   };
   
   tableData.forEach((e) => {
-    const { id, name, rowType, dataType } = e;   
+    const { id, name, rowType, dataType } = e;
     
     if (rowType === "id") {
       randomData.push({
@@ -51,7 +51,7 @@ export const randomData = (data, dbData) => {
       }
     }
   });
-  console.log(randomData);
+
   return randomData;
 };
 
@@ -93,41 +93,49 @@ const getRandomFirstNameMale = (firstNameMaleData) => {
 
   return firstNameMaleData[index];
 };
+
 const getRandomLastNameMale = (lastNameMaleData) => {
   const index = randomIndex(lastNameMaleData);
 
   return lastNameMaleData[index];
 };
+
 const getRandomFirstNameFemale = (firstNameFemaleData) => {
   const index = randomIndex(firstNameFemaleData);
 
   return firstNameFemaleData[index];
 };
+
 const getRandomLastNameFemale = (lastNameFemaleData) => {
   const index = randomIndex(lastNameFemaleData);
 
   return lastNameFemaleData[index];
 };
+
 const getRandomCarBrand = (carBrandData) => {
   const index = randomIndex(carBrandData);
 
   return carBrandData[index];
 };
+
 const getRandomCarModel = (carModelData) => {
   const index = randomIndex(carModelData);
 
   return carModelData[index];
 };
+
 const getRandomColor = (colorsData) => {
   const index = randomIndex(colorsData);
 
   return colorsData[index];
 };
+
 const getCountry = (countryData) => {
   const index = randomIndex(countryData);
 
   return countryData[index];
 };
+
 const getGender = (genderData) => {
   const index = randomIndex(genderData);
 

@@ -36,9 +36,11 @@ function App() {
     const dbData = await getData();
 
     const random = randomData(data, dbData);
+    data.tableData = random;
 
-    // data.tableData = random;
-    // sql += insert(data);
+    sql += insert(data);
+
+    console.log(sql);
 
     // generateFile(sql);
   };
